@@ -11,7 +11,6 @@ node.packages.each do |pkg|
     package pkg
 end
 
-=begin
 execute 'get_strongSwan-5.5.3' do
     command "wget http://download.strongswan.org/strongswan-5.5.3.tar.bz2 -P ~/"
 end
@@ -31,7 +30,6 @@ end
 execute 'make_strongSwan' do
     command "cd ~/strongswan-5.5.3/ && make install"
 end
-=end
 
 %w{ipsec.conf ipsec.secrets}.each do |fname|
     template "/etc/#{fname}" do
@@ -45,10 +43,4 @@ end
 
 template "/etc/strongswan.d/charon/xauth-pam.conf" do
     source "default/ipsec-core/xauth-pam.conf.erb"
-end
-
-test = data_bag('strongswan-conf')
-
-test.each do |haha|
-    puts data_bag_item('strongswan-conf', haha)
 end
