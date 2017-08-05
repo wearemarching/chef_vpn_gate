@@ -13,7 +13,7 @@ package "gcc"
 package "make"
 package "libpam0g-dev"
 
-execute "get_pam_gate" do
+execute "compile_pam_gate" do
     command "cd ~/ && git clone https://github.com/gate-sso/pam_gate.git"
 end
 
