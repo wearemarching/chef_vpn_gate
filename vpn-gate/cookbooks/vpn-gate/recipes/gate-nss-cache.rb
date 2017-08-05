@@ -8,22 +8,6 @@
 #
 
 package "git"
-package "golang-go"
-
-execute 'clone_libnss-cache' do
-    command "cd ~/ && git clone https://github.com/gate-sso/gate-nss-cache.git"
-end
-
-if ENV["GOPATH"] == nil
-    execute 'create_go_path' do
-        command "mkdir /usr/local/etc/code && mkdir /usr/local/etc/code/go"
-    end
-    ENV["GOPATH"] = "/usr/local/etc/code/go"
-end
-
-execute 'get_go_dependencies' do
-    command "go get gopkg.in/yaml.v2"
-end
 
 execute 'create_nss_configuration' do
     command "mkdir /etc/nss/"
@@ -35,5 +19,20 @@ end
 
 template "/etc/nsswitch.conf" do
     source "default/gate-nss-cache-core/nsswitch.conf.erb"
+end
+
+cookbook_file "/bin/gate-nss-cache" do
+    source "gate-nss-cache"
+    owner "root"
+    group "root"
+    mode  "0755"
+end
+
+cron 'adding cron for gate nss cache ' do
+    minute '*/5'
+    command %W{
+        GATE_CONFIG_FILE="/etc/gate/nss.yml"
+        /bin/gate-nss-cache
+    }.join(' ')
 end
 

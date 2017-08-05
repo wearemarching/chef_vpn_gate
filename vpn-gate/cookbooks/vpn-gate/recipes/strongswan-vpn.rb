@@ -6,29 +6,30 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-
-node.packages.each do |pkg|
-    package pkg
-end
+package "iptables-persistent"
+package "gcc"
+package "make"
+package "libgmp3-dev"
+package "libpam0g-dev"
 
 execute 'get_strongSwan-5.5.3' do
-    command "wget http://download.strongswan.org/strongswan-5.5.3.tar.bz2 -P ~/"
+    command "wget http://download.strongswan.org/strongswan-5.5.3.tar.bz2 -P /usr/local/lib"
 end
 
 execute 'extract_strongSwan-5.5.3' do
-    command "tar xjvf ~/strongswan-5.5.3.tar.bz2 -C ~/"
+    command "tar xjvf /usr/local/lib/strongswan-5.5.3.tar.bz2 -C ~/"
 end
 
 execute 'remove_strongSwan-5.5.3' do
-    command "rm ~/strongswan-5.5.3.tar.bz2"
+    command "rm /usr/local/lib/strongswan-5.5.3.tar.bz2"
 end
 
 execute 'configure_strongSwan' do
-    command "cd ~/strongswan-5.5.3/ && ./configure -prefix=/usr --sysconfdir=/etc --enable-eap-gtc --enable-xauth-pam"
+    command "cd /usr/local/lib/strongswan-5.5.3/ && ./configure -prefix=/usr --sysconfdir=/etc --enable-eap-gtc --enable-xauth-pam"
 end
 
 execute 'make_strongSwan' do
-    command "cd ~/strongswan-5.5.3/ && make install"
+    command "cd /usr/local/lib/strongswan-5.5.3/ && make install"
 end
 
 %w{ipsec.conf ipsec.secrets}.each do |fname|

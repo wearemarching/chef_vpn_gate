@@ -10,9 +10,9 @@
 package "git"
 
 execute 'clone_libnss-cache' do
-    command "cd ~/ && git clone https://github.com/gate-sso/libnss-cache.git"
+    command "cd /usr/local/lib && git clone https://github.com/gate-sso/libnss-cache.git"
 end
 
 execute 'make_libnss-cache' do
-    command "cd ~/libnss-cache && make install"
+    command "cd /usr/local/lib/libnss-cache && make install"
 end
