@@ -17,7 +17,7 @@ execute 'get_strongSwan-5.5.3' do
 end
 
 execute 'extract_strongSwan-5.5.3' do
-    command "tar xjvf /usr/local/lib/strongswan-5.5.3.tar.bz2 -C ~/"
+    command "tar xjvf /usr/local/lib/strongswan-5.5.3.tar.bz2 -C /usr/local/lib/"
 end
 
 execute 'remove_strongSwan-5.5.3' do

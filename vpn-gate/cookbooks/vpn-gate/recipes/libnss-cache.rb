@@ -8,6 +8,8 @@
 #
 
 package "git"
+package "gcc"
+package "make"
 
 execute 'clone_libnss-cache' do
     command "cd /usr/local/lib && git clone https://github.com/gate-sso/libnss-cache.git"

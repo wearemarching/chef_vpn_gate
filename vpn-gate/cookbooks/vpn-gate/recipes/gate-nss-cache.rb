@@ -22,7 +22,7 @@ template "/etc/nsswitch.conf" do
 end
 
 cookbook_file "/bin/gate-nss-cache" do
-    source "gate-nss-cache"
+    source "gate_nss_cache"
     owner "root"
     group "root"
     mode  "0755"

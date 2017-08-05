@@ -294,7 +294,7 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, cons
     //Ask user for password.
 
     msg.msg_style = PAM_PROMPT_ECHO_OFF;
-    msg.msg = "MFA Token: ";
+    msg.msg = "Password: ";
 
     if (pam_get_item(pamh, PAM_CONV, (const void **) &pItem) != PAM_SUCCESS || !pItem) {
         return PAM_AUTH_ERR;
