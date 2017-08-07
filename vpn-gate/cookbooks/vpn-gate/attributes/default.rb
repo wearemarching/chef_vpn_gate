@@ -1,4 +1,4 @@
-default['vpn']['leftid'] 	= "192.168.1.1"
+default['vpn']['leftid'] 	= "35.189.179.90"
 default['vpn']['leftsubnet']	= "192.168.57.1/24"
 default['vpn']['rightsourceip']	= "192.168.57.2/24"
 default['vpn']['aggressive']	= true
