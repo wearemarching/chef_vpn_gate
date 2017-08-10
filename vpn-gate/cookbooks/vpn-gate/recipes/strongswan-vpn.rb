@@ -11,6 +11,7 @@ package "gcc"
 package "make"
 package "libgmp3-dev"
 package "libpam0g-dev"
+package "unity"
 
 execute 'get_strongSwan-5.5.3' do
     command "wget http://download.strongswan.org/strongswan-5.5.3.tar.bz2 -P /usr/local/lib"
