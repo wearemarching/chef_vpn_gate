@@ -11,7 +11,6 @@ package "gcc"
 package "make"
 package "libgmp3-dev"
 package "libpam0g-dev"
-package "unity"
 
 execute 'get_strongSwan-5.5.3' do
     command "wget http://download.strongswan.org/strongswan-5.5.3.tar.bz2 -P /usr/local/lib"
@@ -26,7 +25,7 @@ execute 'remove_strongSwan-5.5.3' do
 end
 
 execute 'configure_strongSwan' do
-    command "cd /usr/local/lib/strongswan-5.5.3/ && ./configure -prefix=/usr --sysconfdir=/etc --enable-eap-gtc --enable-xauth-pam"
+    command "cd /usr/local/lib/strongswan-5.5.3/ && ./configure -prefix=/usr --sysconfdir=/etc --enable-eap-gtc --enable-xauth-pam --enable-unity"
 end
 
 execute 'make_strongSwan' do
